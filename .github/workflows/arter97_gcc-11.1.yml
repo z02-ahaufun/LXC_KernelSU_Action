@@ -172,7 +172,9 @@ jobs:
           export KSU_EXPECTED_SIZE=${{ env.KSU_EXPECTED_SIZE }}
           export KSU_EXPECTED_HASH=${{ env.KSU_EXPECTED_HASH }}
         fi 
-        make -j$(nproc --all) O=out ARCH=${{ env.ARCH }} CROSS_COMPILE=aarch64-elf- CROSS_COMPILE_ARM32=arm-eabi- ${{ env.KERNEL_CONFIG }}
+        mkdir out
+        cp ${{ env.KERNEL_CONFIG }} out/.config
+        #make -j$(nproc --all) O=out ARCH=${{ env.ARCH }} CROSS_COMPILE=aarch64-elf- CROSS_COMPILE_ARM32=arm-eabi- ${{ env.KERNEL_CONFIG }}
         make -j$(nproc --all) O=out ARCH=${{ env.ARCH }} CROSS_COMPILE=aarch64-elf- CROSS_COMPILE_ARM32=arm-eabi-
 
     - name: Check a kernel output files
