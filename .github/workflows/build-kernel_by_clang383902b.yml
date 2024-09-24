@@ -91,9 +91,14 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
         #git clone ${{ env.KERNEL_SOURCE }} -b ${{ env.KERNEL_SOURCE_BRANCH }} android-kernel --depth=1
-        wget https://github.com/MotorolaMobilityLLC/kernel-msm/archive/refs/tags/MMI-S1RXS32.50-13-25.zip
-        unzip MMI-S1RXS32.50-13-25.zip
-        mv kernel-msm-MMI-S1RXS32.50-13-25 android-kernel
+        #wget https://github.com/MotorolaMobilityLLC/kernel-msm/archive/refs/tags/MMI-S1RXS32.50-13-25.zip
+        #unzip MMI-S1RXS32.50-13-25.zip
+        #mv kernel-msm-MMI-S1RXS32.50-13-25 android-kernel
+        
+        wget https://github.com/MotorolaMobilityLLC/kernel-msm/archive/refs/tags/MMI-RRX31.Q3-59-42.zip
+        unzip MMI-RRX31.Q3-59-42.zip
+        mv kernel-msm-MMI-RRX31.Q3-59-42 android-kernel
+        
         wget -P android-kernel/arch/arm64/configs/vendor https://cloudreve.hc.ahau.fun/f/KEf4/xpeng.config
         wget -P android-kernel/arch/arm64/configs/vendor https://cloudreve.hc.ahau.fun/f/MXiz/s30_defconfig
         chmod -R 777 android-kernel
