@@ -84,7 +84,7 @@ jobs:
         unzip MMI-S1RXS32.50-13-25.zip
         mv kernel-msm-MMI-S1RXS32.50-13-25 android-kernel
         chmod -R 777 android-kernel
-        wget -P android-kernel/arch/arm64/configs/vendor https://cloudreve.hc.ahau.fun:11475/f/JWcK/s30.config
+        wget -P android-kernel/arch/arm64/configs/vendor https://cloudreve.hc.ahau.fun/f/JWcK/s30.config
 
     - name: Download source boot image
       if: env.BUILD_BOOT_IMG == 'true'
