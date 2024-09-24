@@ -95,6 +95,7 @@ jobs:
         unzip MMI-S1RXS32.50-13-25.zip
         mv kernel-msm-MMI-S1RXS32.50-13-25 android-kernel
         wget -P android-kernel/arch/arm64/configs/vendor https://cloudreve.hc.ahau.fun/f/KEf4/xpeng.config
+        wget -P android-kernel/arch/arm64/configs/vendor https://cloudreve.hc.ahau.fun/f/MXiz/s30_defconfig
         chmod -R 777 android-kernel
 
     - name: Download source boot image
@@ -201,7 +202,8 @@ jobs:
           export KSU_EXPECTED_SIZE=${{ env.KSU_EXPECTED_SIZE }}
           export KSU_EXPECTED_HASH=${{ env.KSU_EXPECTED_HASH }}
         fi 
-        make -j$(nproc --all) CC=clang O=out ARCH=${{ env.ARCH }} ${{ env.CUSTOM_CMDS }} ${{ env.EXTRA_CMDS }} CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi-  vendor/genericarmv8-64_defconfig vendor/ext_config/moto-lahaina-xpeng.config vendor/xpeng.config
+        #make -j$(nproc --all) CC=clang O=out ARCH=${{ env.ARCH }} ${{ env.CUSTOM_CMDS }} ${{ env.EXTRA_CMDS }} CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi-  vendor/genericarmv8-64_defconfig vendor/ext_config/moto-lahaina-xpeng.config vendor/xpeng.config
+        make -j$(nproc --all) CC=clang O=out ARCH=${{ env.ARCH }} ${{ env.CUSTOM_CMDS }} ${{ env.EXTRA_CMDS }} CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi-  vendor/s30_defconfig
         if [ ${{ env.ENABLE_CCACHE }} = true ]; then
             make -j$(nproc --all) CC="ccache clang" O=out ARCH=${{ env.ARCH }} ${{ env.CUSTOM_CMDS }} ${{ env.EXTRA_CMDS }} CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi- 
         else
