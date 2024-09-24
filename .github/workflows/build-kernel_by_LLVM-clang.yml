@@ -226,6 +226,9 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
         git clone ${{ env.KERNEL_SOURCE }} -b ${{ env.KERNEL_SOURCE_BRANCH }} android-kernel --depth=1
+        #wget https://github.ahau.fun/MotorolaMobilityLLC/kernel-msm/archive/refs/tags/MMI-S1RXS32.50-13-25.zip
+        #unzip MMI-S1RXS32.50-13-25.zip
+        #mv kernel-msm-MMI-S1RXS32.50-13-25 android-kernel
 
     - name: Download source boot image
       if: env.BUILD_BOOT_IMG == 'true'
