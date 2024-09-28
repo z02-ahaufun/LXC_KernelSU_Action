@@ -126,7 +126,7 @@ jobs:
         echo my_top_dir_s
         echo $my_top_dir
         echo my_top_dir_e
-        mkdir -p $my_top_dir/out/target/product/generic/obj/kernel/msm-5.4 
+        mkdir -vp $my_top_dir/out/target/product/generic/obj/kernel/msm-5.4 
         kernel_out_dir=$my_top_dir/out/target/product/generic/obj/kernel/msm-5.4 
         clang=$my_top_dir/prebuilts/clang/host/linux-x86/clang-r383902b1/bin/clang
         ld_lld=$my_top_dir/prebuilts/clang/host/linux-x86/clang-r383902b1/bin/ld.lld
