@@ -78,17 +78,17 @@ jobs:
         my_top_dir=$GITHUB_WORKSPACE/kernel_workspace/s30
         mkdir -vp  $my_top_dir/prebuilts/clang/host
         cd $my_top_dir/prebuilts/clang/host
-        git clone https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 --depth=1
-        #git clone https://mirrors.tuna.tsinghua.edu.cn/git/AOSP/platform/prebuilts/clang/host/linux-x86 --depth=1
+        #git clone https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 --depth=1
+        git clone https://mirrors.tuna.tsinghua.edu.cn/git/AOSP/platform/prebuilts/clang/host/linux-x86 --depth=1
         mkdir -vp  $my_top_dir/prebuilts/clang/host/linux-x86
         cd $my_top_dir/prebuilts/clang/host/linux-x86
         git clone https://github.com/ruoqing501/clang-r383902b1 --depth=1
         mkdir -vp  $my_top_dir/prebuilts/gcc/linux-x86/aarch64
         cd $my_top_dir/prebuilts/gcc/linux-x86/aarch64
-        git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 --depth=1
+        git clone https://mirrors.tuna.tsinghua.edu.cn/git/AOSP/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 --depth=1
         mkdir -vp  $my_top_dir/prebuilts/gcc/linux-x86/arm
         cd $my_top_dir/prebuilts/gcc/linux-x86/arm
-        git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8 --depth=1
+        git clone https://mirrors.tuna.tsinghua.edu.cn/git/AOSP/platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8 --depth=1
         # 下载google官方make工具，替换系统make命令
         mkdir -vp  $my_top_dir/prebuilts/build-tools
         cd $my_top_dir/prebuilts
