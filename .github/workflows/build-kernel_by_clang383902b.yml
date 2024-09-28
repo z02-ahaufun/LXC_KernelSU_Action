@@ -201,8 +201,8 @@ jobs:
     - name: Build kernel
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
-        kernel_out_dir= $GITHUB_WORKSPACE/kernel_workspace/android-kernel/out/target/product/generic/obj/kernel/msm-5.4 
-        mkdir -p $GITHUB_WORKSPACE/kernel_workspace/android-kernel/out/target/product/generic/obj/kernel/msm-5.4 
+        mkdir -p $GITHUB_WORKSPACE/kernel_workspace/android-kernel/out/target/product/generic/obj/kernel/msm-5.4/staging
+        kernel_out_dir=$GITHUB_WORKSPACE/kernel_workspace/android-kernel/out/target/product/generic/obj/kernel/msm-5.4 
         
         export PATH=$GITHUB_WORKSPACE/kernel_workspace/clang-aosp/google_clang/clang-r383902b-11.0.2/bin:$GITHUB_WORKSPACE/kernel_workspace/clang-aosp/google_gcc/aarch64-linux-android-4.9/bin:$GITHUB_WORKSPACE/kernel_workspace/clang-aosp/google_gcc/arm-linux-androideabi-4.9/bin:$PATH
         export KBUILD_BUILD_HOST=Github-Action
