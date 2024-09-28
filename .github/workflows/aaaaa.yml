@@ -109,8 +109,8 @@ jobs:
         echo "开始下载内核源码"
         mkdir -p $my_top_dir/kernel
         cd $my_top_dir
-        wget https://github.ahau.fun/MotorolaMobilityLLC/kernel-msm/archive/refs/tags/MMI-S1RXS32.50-13-25.zip
-        unzip MMI-S1RXS32.50-13-25.zip
+        #wget https://github.ahau.fun/MotorolaMobilityLLC/kernel-msm/archive/refs/tags/MMI-S1RXS32.50-13-25.zip
+        #unzip MMI-S1RXS32.50-13-25.zip
         rm -rf MMI-S1RXS32.50-13-25.zip
         mv kernel-msm-MMI-S1RXS32.50-13-25 kernel/msm-5.4 
         cd $my_top_dir/kernel/msm-5.4
@@ -122,7 +122,10 @@ jobs:
     - name: 操作2
       run: |
         # 设置编译环境
-        my_top_dir=$GITHUB_WORKSPACE/kernel_workspace/s30
+        #my_top_dir=$GITHUB_WORKSPACE/kernel_workspace/s30
+        echo my_top_dir_s
+        echo $my_top_dir
+        echo my_top_dir_e
         mkdir -p $my_top_dir/out/target/product/generic/obj/kernel/msm-5.4 
         kernel_out_dir=$my_top_dir/out/target/product/generic/obj/kernel/msm-5.4 
         clang=$my_top_dir/prebuilts/clang/host/linux-x86/clang-r383902b1/bin/clang
