@@ -72,7 +72,7 @@ jobs:
         mkdir -p $GITHUB_WORKSPACE/kernel_workspace
 
 
-    - name: 操作
+    - name: 操作1
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
         mkdir $PWD/s30 -p
@@ -119,7 +119,8 @@ jobs:
         make mrproper
         echo "清理上次编译残留成功！"
 
-
+    - name: 操作2
+      run: |
         # 设置编译环境
         mkdir -p $my_top_dir/out/target/product/generic/obj/kernel/msm-5.4 
         kernel_out_dir=$my_top_dir/out/target/product/generic/obj/kernel/msm-5.4 
@@ -148,10 +149,7 @@ jobs:
         $make -j48 -C kernel/msm-5.4 ARCH=arm64 CROSS_COMPILE=$aarch64_linux_android_ HOSTCFLAGS="-I$my_top_dir/kernel/msm-5.4/include/uapi -I/usr/include -I/usr/include/x86_64-linux-gnu -I$my_top_dir/kernel/msm-5.4/include -L/usr/lib -L/usr/lib/x86_64-linux-gnu -fuse-ld=lld" HOSTLDFLAGS="-L/usr/lib -L/usr/lib/x86_64-linux-gnu -fuse-ld=lld" O=$kernel_out_dir  REAL_CC=$clang CLANG_TRIPLE=aarch64-linux-gnu- AR=$llvm_ar LLVM_NM=$llvm_nm LD=$ld_lld NM=$llvm_nm DTC_EXT=dtc DTC_OVERLAY_TEST_EXT=ufdt_apply_overlay CONFIG_BUILD_ARM64_DT_OVERLAY=y HOSTCC=$clang HOSTAR=$x86_64_linux_ar HOSTLD=$x86_64_linux_ld
 
         $make -j48 -C kernel/msm-5.4 O=$kernel_out_dir ARCH=arm64 CROSS_COMPILE=$aarch64_linux_android_ HOSTCFLAGS="-I$my_top_dir/kernel/msm-5.4/include/uapi -I/usr/include -I/usr/include/x86_64-linux-gnu -I$my_top_dir/kernel/msm-5.4/include -L/usr/lib -L/usr/lib/x86_64-linux-gnu -fuse-ld=lld" HOSTLDFLAGS="-L/usr/lib -L/usr/lib/x86_64-linux-gnu -fuse-ld=lld" INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=$kernel_out_dir/staging REAL_CC=$clang CLANG_TRIPLE=aarch64-linux-gnu- AR=$llvm_ar LLVM_NM=$llvm_nm LD=$ld_lld NM=$llvm_nm DTC_EXT=dtc DTC_OVERLAY_TEST_EXT=ufdt_apply_overlay CONFIG_BUILD_ARM64_DT_OVERLAY=y HOSTCC=$clang HOSTAR=$x86_64_linux_ar HOSTLD=$x86_64_linux_ld modules_install
-
-
-
-          
+      
      
 
 
