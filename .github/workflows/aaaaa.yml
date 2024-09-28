@@ -80,21 +80,44 @@ jobs:
         #cd $PWD/s30
         my_top_dir=$GITHUB_WORKSPACE/kernel_workspace/s30
         echo $my_top_dir
-       
 
+         # 下载google官方make工具，替换系统make命令
+        mkdir -vp  $my_top_dir/prebuilts/build-tools
+        cd $my_top_dir/prebuilts
+        git clone https://github.ahau.fun/LineageOS/android_prebuilts_build-tools build-tools --depth=1
+
+        # 下载aarch64-linux-android-4.9和clang-r383902b1
+        mkdir -vp  $my_top_dir/prebuilts/gcc/linux-x86/aarch64
+        cd $my_top_dir/prebuilts/gcc/linux-x86/aarch64
+        git clone https://github.ahau.fun/tomxi1997/Toolchain.git toolchain_tmp --depth=1
+        mv toolchain_tmp/google_gcc/aarch64-linux-android-4.9 $my_top_dir/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9
+        mkdir -vp  $my_top_dir/prebuilts/clang/host/linux-x86
+        mv toolchain_tmp/google_clang/clang-r383902b-11.0.2 $my_top_dir/prebuilts/clang/host/linux-x86/clang-r383902b1
+        rm -rf toolchain_tmp
+
+        # 下载x86_64-linux-glibc2.17-4.8
+        mkdir -vp  $my_top_dir/prebuilts/gcc/linux-x86/host
+        cd $my_top_dir/prebuilts/gcc/linux-x86/host
+        git clone https://github.ahau.fun/AOSiP/platform_prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8 x86_64-linux-glibc2.17-4.8 --depth=1
+
+        # 下载arm-eabi-4.8 
+        mkdir -vp  $my_top_dir/prebuilts/gcc/linux-x86/arm
+        cd $my_top_dir/prebuilts/gcc/linux-x86/arm
+        git clone https://github.ahau.fun/xienli/arm-eabi-4.8 arm-eabi-4.8 --depth=1
+        
         #下载内核并重命名为$my_top_dir/kernel/msm-5.4  
         echo "开始下载内核源码"
         mkdir -p $my_top_dir/kernel
         cd $my_top_dir
-        #wget https://github.ahau.fun/MotorolaMobilityLLC/kernel-msm/archive/refs/tags/MMI-S1RXS32.50-13-25.zip
-        #unzip MMI-S1RXS32.50-13-25.zip
-        #rm -rf MMI-S1RXS32.50-13-25.zip
-        #mv kernel-msm-MMI-S1RXS32.50-13-25 kernel/msm-5.4 
-        #cd $my_top_dir/kernel/msm-5.4
-        #echo "开始清理上次编译残留"
-        #make clean
-        #make mrproper
-        #echo "清理上次编译残留成功！"
+        wget https://github.ahau.fun/MotorolaMobilityLLC/kernel-msm/archive/refs/tags/MMI-S1RXS32.50-13-25.zip
+        unzip MMI-S1RXS32.50-13-25.zip -q
+        rm -rf MMI-S1RXS32.50-13-25.zip
+        mv kernel-msm-MMI-S1RXS32.50-13-25 kernel/msm-5.4 
+        cd $my_top_dir/kernel/msm-5.4
+        echo "开始清理上次编译残留"
+        make clean
+        make mrproper
+        echo "清理上次编译残留成功！"
 
     - name: 操作2
       run: |
