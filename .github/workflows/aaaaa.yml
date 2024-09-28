@@ -110,7 +110,7 @@ jobs:
         mkdir -p $my_top_dir/kernel
         cd $my_top_dir
         wget https://github.ahau.fun/MotorolaMobilityLLC/kernel-msm/archive/refs/tags/MMI-S1RXS32.50-13-25.zip
-        unzip MMI-S1RXS32.50-13-25.zip -q
+        unzip -q MMI-S1RXS32.50-13-25.zip
         rm -rf MMI-S1RXS32.50-13-25.zip
         mv kernel-msm-MMI-S1RXS32.50-13-25 kernel/msm-5.4 
         cd $my_top_dir/kernel/msm-5.4
