@@ -74,12 +74,12 @@ jobs:
 
     - name: 操作1
       run: |
-        cd $GITHUB_WORKSPACE/kernel_workspace
-        mkdir $PWD/s30 -p
-        chmod 777 $PWD/s30
-        cd $PWD/s30
-        my_top_dir=$PWD
-
+        #cd $GITHUB_WORKSPACE/kernel_workspace
+        #mkdir $PWD/s30 -p
+        #chmod 777 $PWD/s30
+        #cd $PWD/s30
+        my_top_dir=$GITHUB_WORKSPACE/kernel_workspace/s30
+        echo $my_top_dir
         # 下载google官方make工具，替换系统make命令
         mkdir -vp  $my_top_dir/prebuilts/build-tools
         cd $my_top_dir/prebuilts
