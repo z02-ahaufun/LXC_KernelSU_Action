@@ -122,9 +122,7 @@ jobs:
     - name: 操作2
       run: |
         # 设置编译环境
-        cd $GITHUB_WORKSPACE/kernel_workspace
-        cd $PWD/s30
-        my_top_dir=$PWD
+        my_top_dir=$GITHUB_WORKSPACE/kernel_workspace/s30
         mkdir -p $my_top_dir/out/target/product/generic/obj/kernel/msm-5.4 
         kernel_out_dir=$my_top_dir/out/target/product/generic/obj/kernel/msm-5.4 
         clang=$my_top_dir/prebuilts/clang/host/linux-x86/clang-r383902b1/bin/clang
