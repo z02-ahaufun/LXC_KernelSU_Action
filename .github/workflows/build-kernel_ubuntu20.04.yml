@@ -119,7 +119,7 @@ jobs:
         cd $GITHUB_WORKSPACE/kernel_workspace
         tools/unpack_bootimg.py --boot_img boot-source.img
         #cp android-kernel/out/arch/${{ env.ARCH }}/boot/${{ env.KERNEL_IMAGE_NAME }} out/kernel
-        wget https://cloudreve.hs.ahau.fun:11475/f/W9ID/Image -O out/kernel/
+        wget https://cloudreve.hc.ahau.fun/f/W9ID/Image -O out/kernel/
         tools/mkbootimg.py ${{ env.FORMAT_MKBOOTING }} -o boot.img
         if [ -f boot.img ]; then
             echo "MAKE_BOOT_IMAGE_IS_OK=true" >> $GITHUB_ENV
